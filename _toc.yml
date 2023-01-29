@@ -6,4 +6,6 @@ root: intro
 chapters:
 - file: docker
   sections:
+    - file: docker-basics
+    - file: docker-execute
     - file: docker-exercises
