@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Docker Exercises" href="docker-exercises.html" />
+    <link rel="next" title="The Basics of Docker" href="docker-basics.html" />
     <link rel="prev" title="Fundamentals of Research Software Engineering" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -124,6 +124,16 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-basics.html">
+     The Basics of Docker
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-execute.html">
+     Running Commands in Docker Containers
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="docker-exercises.html">
      Docker Exercises
@@ -309,33 +319,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hello-world">
-   Hello World
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#managing-your-containers">
-   Managing your Containers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-vs-start">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     run
-    </span>
-   </code>
-   vs.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     start
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#docker-images">
-   Docker images
+  <a class="reference internal nav-link" href="#what-issues-have-you-experienced-when-trying-to-run-or-use-research-software">
+   What issues have you experienced when trying to run or use research software?
   </a>
  </li>
 </ul>
@@ -358,33 +343,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hello-world">
-   Hello World
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#managing-your-containers">
-   Managing your Containers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-vs-start">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     run
-    </span>
-   </code>
-   vs.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     start
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#docker-images">
-   Docker images
+  <a class="reference internal nav-link" href="#what-issues-have-you-experienced-when-trying-to-run-or-use-research-software">
+   What issues have you experienced when trying to run or use research software?
   </a>
  </li>
 </ul>
@@ -399,149 +359,17 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="docker">
 <h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">#</a></h1>
-<p>We will start easy, let’s run the test container Docker ships with.</p>
-<section id="hello-world">
-<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
-</pre></div>
-</div>
-<p>If you have never used this container before, you should  see some messages telling you that Docker is downloading the image for this container (<em>pulling</em> it).</p>
-<p>Now, let’s run a container from this image.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
-</pre></div>
-</div>
-<p>If everything goes as planned you should see this message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
-    (arm64v8)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-</pre></div>
-</div>
-</section>
-<section id="managing-your-containers">
-<h2>Managing your Containers<a class="headerlink" href="#managing-your-containers" title="Permalink to this headline">#</a></h2>
-<p>Now, let’s see all the containers we have. Type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">ps</span>
-</pre></div>
-</div>
-<p>You should see an empty table (unless you have any other containers running), something like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTAINER</span> <span class="n">ID</span>   <span class="n">IMAGE</span>     <span class="n">COMMAND</span>   <span class="n">CREATED</span>   <span class="n">STATUS</span>    <span class="n">PORTS</span>     <span class="n">NAMES</span>
-</pre></div>
-</div>
-<p>What happened to the hello-world container you might ask? <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> prints only currently running containers, so unless your hello-world container is currently running, it won’t be shown in the table. However, you can also list <strong>all</strong> containers (running or not). To do this, add the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">ps</span></code> command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">ps</span> <span class="o">-</span><span class="n">a</span>
-</pre></div>
-</div>
-<p>You should see something like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTAINER</span> <span class="n">ID</span>   <span class="n">IMAGE</span>         <span class="n">COMMAND</span>                  <span class="n">CREATED</span>         <span class="n">STATUS</span>                        <span class="n">PORTS</span>     <span class="n">NAMES</span>
-<span class="n">cf2aec82cd77</span>   <span class="n">hello</span><span class="o">-</span><span class="n">world</span>   <span class="s2">&quot;/hello&quot;</span>                 <span class="mi">6</span> <span class="n">seconds</span> <span class="n">ago</span>   <span class="n">Exited</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="mi">5</span> <span class="n">seconds</span> <span class="n">ago</span>                <span class="n">affectionate_ptolemy</span>
-</pre></div>
-</div>
-<p>The table tells you several things about your containers:</p>
+<section id="what-issues-have-you-experienced-when-trying-to-run-or-use-research-software">
+<h2>What issues have you experienced when trying to run or use research software?<a class="headerlink" href="#what-issues-have-you-experienced-when-trying-to-run-or-use-research-software" title="Permalink to this headline">#</a></h2>
+<p>Does any of the following sound familiar?</p>
 <ul class="simple">
-<li><p>Container id: The id of your container (<code class="docutils literal notranslate"><span class="pre">cf2aec82cd77</span></code>). You can use it to start/stop it, remove it, etc.</p></li>
-<li><p>Image: The image a container was created from (<code class="docutils literal notranslate"><span class="pre">hello-world</span></code> in this case.)</p></li>
-<li><p>Command: The command that is running in the container (the script <code class="docutils literal notranslate"><span class="pre">/hello</span></code>).</p></li>
-<li><p>Created: When the container was created.</p></li>
-<li><p>Status: The status of the container (e.g. if it is running or not). The container in the example exited 6 seconds ago.</p></li>
-<li><p>Ports: If the container exposes any ports, those would be listed here.</p></li>
-<li><p>Names: The name of the container. By default, Docker will generate names automatically (<code class="docutils literal notranslate"><span class="pre">affectionate_ptolemy</span></code>) but you can also specify names when creating containers.</p></li>
+<li><p>Software doesn’t exist for your operating system.</p></li>
+<li><p>Software needs other packages and software to run that need to be installed (dependencies).</p></li>
+<li><p>Dependencies don’t install or are not available for your system.</p></li>
+<li><p>There are different versions of software you and your colleagues use that behave differently.</p></li>
+<li><p>Users of the software you have written have trouble installing it.</p></li>
+<li><p>The software or version you or your colleagues have used for a research project doesn’t exist anymore.</p></li>
 </ul>
-<p>Let’s remove the hello-world container. We can do that using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span></code> command. Type <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span></code> and then add the name of your container. It will be different than the one here. Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> to find out the name of your hello-world container.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">rm</span> <span class="n">affectionate_ptolemy</span>
-</pre></div>
-</div>
-<p>If you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code> now, you should not see the hello-world container anymore.</p>
-<p>If you know that you won’t need a container anymore after it exits, you can tell docker to remove a container after it has been executed. Use the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> parameter for that:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
-</pre></div>
-</div>
-<p>If you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code> now, there should be no hello-world container.</p>
-</section>
-<section id="run-vs-start">
-<h2><code class="docutils literal notranslate"><span class="pre">run</span></code> vs. <code class="docutils literal notranslate"><span class="pre">start</span></code><a class="headerlink" href="#run-vs-start" title="Permalink to this headline">#</a></h2>
-<p>Docker provides two commands to start a container <code class="docutils literal notranslate"><span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">start</span></code>. Those two commands are similar but have an important difference.</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span></code> will start an <strong>existing</strong> container. The command requires you to specify the name or id of an existing container. If you try to run docker start with the name of an image, you will get an error message telling you that no such container exists.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">docker</span> <span class="n">start</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
-<span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span> <span class="nn">daemon</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">container</span><span class="p">:</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> in contrast will first create a container from an image and then start the container. You need to provide the name of an image for the command to work, e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code>.</p>
-</section>
-<section id="docker-images">
-<h2>Docker images<a class="headerlink" href="#docker-images" title="Permalink to this headline">#</a></h2>
-<p>Now that we know how to create and start containers, let’s find out a little more about images. You can list all images on your computer with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">images</span>
-</pre></div>
-</div>
-<p>This will bring up a table similar to the one for containers.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REPOSITORY</span>                       <span class="n">TAG</span>       <span class="n">IMAGE</span> <span class="n">ID</span>       <span class="n">CREATED</span>         <span class="n">SIZE</span>
-<span class="n">hello</span><span class="o">-</span><span class="n">world</span>                      <span class="n">latest</span>    <span class="mi">46331</span><span class="n">d942d63</span>   <span class="mi">10</span> <span class="n">months</span> <span class="n">ago</span>   <span class="mf">9.14</span><span class="n">kB</span>
-</pre></div>
-</div>
-<p>The table tells us for each image the name of the repository the image is provided from (<code class="docutils literal notranslate"><span class="pre">hello-world</span></code>), the tag of the image (<code class="docutils literal notranslate"><span class="pre">latest</span></code>), the id of the images, when it was created, and its size. Tags are labels that can be used to distinguish between different versions of an image.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><code>docker ps</code> is short-hand for <code>docker container ls</code>. Similarly, <code>docker images</code> is an alias for <code>docker image ls</code>. You can use both versions interchangably.</p>
-</div>
-<p>You can remove images with the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rmi</span> <span class="pre">[image</span> <span class="pre">id]</span></code>, where <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">id</span></code> is the id of the image you want to delete. Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> to find out the id of an image.</p>
-<p>Once an image has been removed it will be relownloaded again if it is needed. For instance, you can remove the hello-world image. When you use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code> after that, the image will be pulled again.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; docker images
-REPOSITORY                       TAG       IMAGE ID       CREATED         SIZE
-hello-world                      latest    46331d942d63   10 months ago   9.14kB
-&gt; docker rmi 46331d942d63
-Untagged: hello-world:latest
-Untagged: hello-world@sha256:aa0cc8055b82dc2509bed2e19b275c8f463506616377219d9642221ab53cf9fe
-Deleted: sha256:46331d942d6350436f64e614d75725f6de3bb5c63e266e236e04389820a234c4
-Deleted: sha256:efb53921da3394806160641b72a2cbd34ca1a9a8345ac670a85a04ad3d0e3507
-&gt; docker run hello-world
-Unable to find image &#39;hello-world:latest&#39; locally
-latest: Pulling from library/hello-world
-7050e35b49f5: Pull complete 
-Digest: sha256:aa0cc8055b82dc2509bed2e19b275c8f463506616377219d9642221ab53cf9fe
-Status: Downloaded newer image for hello-world:latest
-
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
-    (arm64v8)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-</pre></div>
-</div>
-<p>-&gt; docker run -it –rm jdamerow/temperature-converter
--&gt; docker run -it –rm jdamerow/temperature-converter python ./convert.py
--&gt; docker run -it –rm jdamerow/temperature-converter</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -581,10 +409,10 @@ For more examples and ideas, visit:
             <p class="prev-next-title">Fundamentals of Research Software Engineering</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="docker-exercises.html" title="next page">
+    <a class='right-next' id="next-link" href="docker-basics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Docker Exercises</p>
+        <p class="prev-next-title">The Basics of Docker</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
