@@ -8,4 +8,5 @@ chapters:
   sections:
     - file: docker-basics
     - file: docker-execute
+    - file: docker-data
     - file: docker-exercises
