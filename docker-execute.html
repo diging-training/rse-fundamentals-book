@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Docker Exercises" href="docker-exercises.html" />
+    <link rel="next" title="Data and Docker" href="docker-data.html" />
     <link rel="prev" title="The Basics of Docker" href="docker-basics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -132,6 +132,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Running Commands in Docker Containers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-data.html">
+     Data and Docker
     </a>
    </li>
    <li class="toctree-l2">
@@ -376,7 +381,7 @@ title="Print to PDF"
 <p>What is happening? The alpine image is an image that provides a basic Alpine Linux system. It doesn’t run any commands when you start a container created from the image but instead gives you access to the basic functionality of the operating system such as a shell. If you only run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span></code> you won’t get any output. However, when you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span> <span class="pre">[a</span> <span class="pre">command]</span></code> you tell the container to execute the given command in that operating system.</p>
 <section id="interacting-with-a-running-container">
 <h2>Interacting with a running Container<a class="headerlink" href="#interacting-with-a-running-container" title="Permalink to this headline">#</a></h2>
-<p>This is cool! We can run commands in a Docker container that hasn’t been predefined by the creator of the container. But it gets better!</p>
+<p>This is cool! We can run commands in a Docker container that haven’t been predefined by the creator of the container. But it gets better!</p>
 <p>Run the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="n">jdamerow</span><span class="o">/</span><span class="n">temperature</span><span class="o">-</span><span class="n">converter</span> <span class="n">python</span> <span class="o">./</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span>  
 </pre></div>
@@ -411,12 +416,8 @@ title="Print to PDF"
 <span class="o">&gt;&gt;&gt;</span> 
 </pre></div>
 </div>
-<p>This is the Python interpreter! You can now use it the same way (almost) as you would use on your host system. Type <code class="docutils literal notranslate"><span class="pre">exit()</span></code> to exit out of it.</p>
+<p>This is the Python interpreter! You can now use it (almost) the same way as you would use on your host system. Type <code class="docutils literal notranslate"><span class="pre">exit()</span></code> to exit out of it.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag stands for <code class="docutils literal notranslate"><span class="pre">tty</span></code>. In simple terms, this means that you get a terminal connection to the container. The terminal connection lets you interact with the Python interpreter. If you execute <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">jdamerow/temperature-converter</span> <span class="pre">bash</span></code> it gives you access to a bash shell inside the container.</p>
-<p>-&gt; executing commands in docker container
--&gt; docker run -it –rm jdamerow/temperature-converter
--&gt; docker run -it –rm jdamerow/temperature-converter python ./convert.py
--&gt; docker run -it –rm jdamerow/temperature-converter</p>
 </section>
 </section>
 
@@ -454,10 +455,10 @@ title="Print to PDF"
             <p class="prev-next-title">The Basics of Docker</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="docker-exercises.html" title="next page">
+    <a class='right-next' id="next-link" href="docker-data.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Docker Exercises</p>
+        <p class="prev-next-title">Data and Docker</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

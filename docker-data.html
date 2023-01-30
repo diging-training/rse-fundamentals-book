@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Docker &#8212; Fundamentals of Research Software Engineering</title>
+    <title>Data and Docker &#8212; Fundamentals of Research Software Engineering</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Basics of Docker" href="docker-basics.html" />
-    <link rel="prev" title="Fundamentals of Research Software Engineering" href="intro.html" />
+    <link rel="next" title="Docker Exercises" href="docker-exercises.html" />
+    <link rel="prev" title="Running Commands in Docker Containers" href="docker-execute.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="docker.html">
    Docker
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="docker-basics.html">
      The Basics of Docker
@@ -134,8 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
      Running Commands in Docker Containers
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="docker-data.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Data and Docker
     </a>
    </li>
@@ -236,7 +236,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocker.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocker-data.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -264,7 +264,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/docker.md"
+        <a href="_sources/docker-data.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -324,8 +324,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-issues-have-you-experienced-when-trying-to-run-or-use-research-software">
-   What issues have you experienced when trying to run or use research software?
+  <a class="reference internal nav-link" href="#copying-data">
+   Copying Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sharing-data-with-the-container">
+   Sharing Data with the Container
   </a>
  </li>
 </ul>
@@ -337,7 +342,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Docker</h1>
+                <h1>Data and Docker</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -348,8 +353,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-issues-have-you-experienced-when-trying-to-run-or-use-research-software">
-   What issues have you experienced when trying to run or use research software?
+  <a class="reference internal nav-link" href="#copying-data">
+   Copying Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sharing-data-with-the-container">
+   Sharing Data with the Container
   </a>
  </li>
 </ul>
@@ -362,22 +372,50 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="docker">
-<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">#</a></h1>
-<section id="what-issues-have-you-experienced-when-trying-to-run-or-use-research-software">
-<h2>What issues have you experienced when trying to run or use research software?<a class="headerlink" href="#what-issues-have-you-experienced-when-trying-to-run-or-use-research-software" title="Permalink to this headline">#</a></h2>
-<p>Does any of the following sound familiar?</p>
-<ul class="simple">
-<li><p>Software doesn’t exist for your operating system.</p></li>
-<li><p>Software needs other packages and software to run that need to be installed (dependencies).</p></li>
-<li><p>Dependencies don’t install or are not available for your system.</p></li>
-<li><p>There are different versions of software you and your colleagues use that behave differently.</p></li>
-<li><p>Users of the software you have written have trouble installing it.</p></li>
-<li><p>The software or version you or your colleagues have used for a research project doesn’t exist anymore.</p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="data-and-docker">
+<h1>Data and Docker<a class="headerlink" href="#data-and-docker" title="Permalink to this headline">#</a></h1>
+<p>So far, we’ve talked about images and containers. We have seen how we can use containers to run software that wouldn’t run on our host computer either because it doesn’t run on our operating system or because we don’t want to install all the required dependencies and the software itself. However, what we haven’t talked is about the data that we might need to execute a program or the output a program might produce.</p>
+<p>Here is the thing though, a Docker container is separte from your host system. It is isolated from the rest of your system. This is good, because it gives you a certain amount of security (even if you run a container created by an evil hacker, the container won’t be able to take over your system). However, this means that only data already present in the container is available for any program to use and data produced in the container are only available in the container. Once the container is shutdown and removed, so is the data.</p>
+<section id="copying-data">
+<h2>Copying Data<a class="headerlink" href="#copying-data" title="Permalink to this headline">#</a></h2>
+<p>To solve this issue, Docker provides the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">cp</span></code> command. If you run this command, Docker will copy a file or folder from the host computer to the container or vice versa.</p>
+<p>Let’s try it out. Open a terminal and run the <code class="docutils literal notranslate"><span class="pre">temperature-converter</span></code> container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="n">jdamerow</span><span class="o">/</span><span class="n">temperature</span><span class="o">-</span><span class="n">converter</span> <span class="n">bash</span>
+</pre></div>
 </div>
+<p>Now, open another terminal and navigate to a folder you want to use for this exercise. Create a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;Hello World&quot;</span> <span class="o">&gt;</span> <span class="n">my</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Now copy this file into the running container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">docker</span> <span class="n">ps</span>
+<span class="n">CONTAINER</span> <span class="n">ID</span>   <span class="n">IMAGE</span>                            <span class="n">COMMAND</span>   <span class="n">CREATED</span>         <span class="n">STATUS</span>         <span class="n">PORTS</span>     <span class="n">NAMES</span>
+<span class="mi">35</span><span class="n">c544e884db</span>   <span class="n">jdamerow</span><span class="o">/</span><span class="n">temperature</span><span class="o">-</span><span class="n">converter</span>   <span class="s2">&quot;bash&quot;</span>    <span class="mi">2</span> <span class="n">minutes</span> <span class="n">ago</span>   <span class="n">Up</span> <span class="mi">2</span> <span class="n">minutes</span>             <span class="n">hardcore_payne</span>
+<span class="n">docker</span> <span class="n">cp</span> <span class="n">my</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">file</span><span class="o">.</span><span class="n">txt</span> <span class="n">hardcore_payne</span><span class="p">:</span><span class="o">/</span><span class="n">app</span>
+</pre></div>
+</div>
+<p>Go back to the terminal where you started the Docker container and check if the file has been copied into the <code class="docutils literal notranslate"><span class="pre">/app</span></code> folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">ls</span> <span class="o">/</span><span class="n">app</span>
+<span class="n">convert</span><span class="o">.</span><span class="n">py</span>  <span class="n">my</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Let’s look at the copy command a little bit closer:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">cp</span> <span class="pre">my-test-file.txt</span> <span class="pre">hardcore_payne:/app</span></code></p>
+<p>First we have the command (<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">cp</span></code>), then we tell Docker what file to copy (<code class="docutils literal notranslate"><span class="pre">my-test-file.txt</span></code>), and last we tell Docker where to copy the file to (into the container <code class="docutils literal notranslate"> <span class="pre">hardcore_payne</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">/app</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When running the command on your computer, make sure to use the name of your Docker container (which will most likely not be <code>hardcore_payne</code>.)</p>
+</div>
+<p>If you want to copy a file from a container to your host system, you add the container name prefix (<code class="docutils literal notranslate"><span class="pre">hardcore_payne:</span></code>) to the first file (e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">cp</span> <span class="pre">hardcore_payne:/app/my-test-file.txt</span> <span class="pre">my-second-test.txt</span></code>).</p>
+</section>
+<section id="sharing-data-with-the-container">
+<h2>Sharing Data with the Container<a class="headerlink" href="#sharing-data-with-the-container" title="Permalink to this headline">#</a></h2>
+<p>The above described solution works great if you only have to copy a file or directory once or twice. However, if you rerun your analysis multiple times or your container continuously generates data you need outside the container, using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">cp</span></code> command becomes cumbersome at best. Hence, Docker provides another solution: you can share folders between your host system and container. A shared folder is available in both your host system and your container. If you change a file in a shared folder, both systems have access to the file and its changes. The easiest way to achieve a shared folder is to <em>mount</em> a folder in your host system in a container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --mount type=bind,source=${PWD},target=/data jdamerow/temperature-converter bash
+</pre></div>
+</div>
+<p>As you can see we are running the same command we used before but added <code class="docutils literal notranslate"><span class="pre">--mount</span> <span class="pre">type=bind,source=${PWD},target=/data</span></code>. This tells Docker to mount the folder at <code class="docutils literal notranslate"><span class="pre">${PWD}</span></code> (a variable that evalutes to our curren folder) to the folder <code class="docutils literal notranslate"><span class="pre">/data</span></code> inside the Docker container. Try it out! Once you are in the container, type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/data</span></code>. This should bring up a list of all the files in the folder you were currently in when starting the container. If you add a file in <code class="docutils literal notranslate"><span class="pre">/data</span></code> inside the container, that file will appear in your host system as well!</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -407,17 +445,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="docker-execute.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Fundamentals of Research Software Engineering</p>
+            <p class="prev-next-title">Running Commands in Docker Containers</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="docker-basics.html" title="next page">
+    <a class='right-next' id="next-link" href="docker-exercises.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Basics of Docker</p>
+        <p class="prev-next-title">Docker Exercises</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,4 +6,6 @@
 
 1. Run the command `cat /etc/os-release` in an alpine container. What does it print?
 
+2. Run the following command `docker run -it --rm jdamerow/temperature-converter bash`. Then get a list of all the files in the `/app` folder in the container. Then run `python convert.py`.
+
 Take a screenshot of the output of each of the commands.

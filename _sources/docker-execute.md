@@ -23,7 +23,7 @@ What is happening? The alpine image is an image that provides a basic Alpine Lin
 
 ## Interacting with a running Container
 
-This is cool! We can run commands in a Docker container that hasn't been predefined by the creator of the container. But it gets better! 
+This is cool! We can run commands in a Docker container that haven't been predefined by the creator of the container. But it gets better! 
 
 Run the following command:
 
@@ -72,12 +72,8 @@ Python 3.9.16 (main, Jan 23 2023, 23:47:45)
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
-This is the Python interpreter! You can now use it the same way (almost) as you would use on your host system. Type `exit()` to exit out of it.
+This is the Python interpreter! You can now use it (almost) the same way as you would use on your host system. Type `exit()` to exit out of it.
 
 The `-t` flag stands for `tty`. In simple terms, this means that you get a terminal connection to the container. The terminal connection lets you interact with the Python interpreter. If you execute `docker run -it --rm jdamerow/temperature-converter bash` it gives you access to a bash shell inside the container.
 
--> executing commands in docker container
--> docker run -it --rm jdamerow/temperature-converter
--> docker run -it --rm jdamerow/temperature-converter python ./convert.py 
--> docker run -it --rm jdamerow/temperature-converter
 

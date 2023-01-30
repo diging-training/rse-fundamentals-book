@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Running Commands in Docker Containers" href="docker-execute.html" />
+    <link rel="prev" title="Data and Docker" href="docker-data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -131,6 +131,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="docker-execute.html">
      Running Commands in Docker Containers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-data.html">
+     Data and Docker
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -325,6 +330,7 @@ title="Print to PDF"
 <li><p>Create and run a container of the <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image. What is printed on the console after you do that? Did Docker pull the image from the repository or was it already present on your system?</p></li>
 <li><p>Print all Docker images on your computer. How many are there? Then print all containers. How many are there? Do you have at least one container for each image? Do you have more than one container per image? If so, why?</p></li>
 <li><p>Run the command <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/os-release</span></code> in an alpine container. What does it print?</p></li>
+<li><p>Run the following command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">jdamerow/temperature-converter</span> <span class="pre">bash</span></code>. Then get a list of all the files in the <code class="docutils literal notranslate"><span class="pre">/app</span></code> folder in the container. Then run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">convert.py</span></code>.</p></li>
 </ol>
 <p>Take a screenshot of the output of each of the commands.</p>
 </section>
@@ -356,11 +362,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="docker-execute.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="docker-data.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Running Commands in Docker Containers</p>
+            <p class="prev-next-title">Data and Docker</p>
         </div>
     </a>
 </div>
