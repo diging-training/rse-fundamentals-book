@@ -4,9 +4,13 @@
 format: jb-book
 root: intro
 chapters:
-- file: docker
+- file: docker/docker
   sections:
-    - file: docker-basics
-    - file: docker-execute
-    - file: docker-data
-    - file: docker-exercises
+    - file: docker/docker-basics
+    - file: docker/docker-execute
+    - file: docker/docker-data
+    - file: docker/docker-exercises
+- file: git/git
+  sections:
+    - file: git/git-overview
+    - file: git/git-first-steps
