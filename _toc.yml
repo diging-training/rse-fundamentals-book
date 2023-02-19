@@ -14,3 +14,5 @@ chapters:
   sections:
     - file: git/git-overview
     - file: git/git-first-steps
+    - file: git/git-commit
+    - file: git/git-exercise-1
