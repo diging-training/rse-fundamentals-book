@@ -6,6 +6,8 @@
 
 1. Get the commit id of your last commit. Then type `git checkout <commit id> bio.txt` (e.g. `git checkout 0954ee152 bio.txt `). Now run `git status`. What does `git status` print? What did the checkout command do here? (Hint: check the `bio.txt` file)
 
+1. Think about your last project/homework/paper. How could you have used Git? How would it have benefitted your project/homework/paper? 
+
 ```{note}
 <code>git checkout</code> has other uses as well. You will not see the same behavior if you don't provide a file name. If you run `git checkout 0954ee152`, you'll probably see a message like this:
 
@@ -28,3 +30,4 @@
 
 While this may sound scary, don't worry, you didn't break anything. Just type `git checkout main` to get back to your project.
 ```
+

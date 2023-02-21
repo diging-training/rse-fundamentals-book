@@ -16,6 +16,6 @@ There are two types of version control systems: centralized and distributed vers
 
 ![Centralized Version Control](./imgs/centralized-vs.png)
 
-In a distributed version control system (like Git), every developer who works with the code has a full copy of the complete version history (of the repository). And there can be several different repositories, developers submit to and pull from. A distribributed version control system has the benefit that there are multiple backups of the code by design. Basically, every developer who works on the code has a backup and should all the servers that host the remote copy of the code go up in flames, there is still a decent change that there exists another copy of the cope on a developer's machine.
+In a distributed version control system (like Git), every developer who works with the code has a full copy of the complete version history (of the repository). And there can be several different repositories, developers submit to and pull from. A distribributed version control system has the benefit that there are multiple backups of the code by design. Basically, every developer who works on the code has a backup and should all the servers that host the remote copy of the code go up in flames, there is still a decent change that there exists another copy of the code on a developer's machine.
 
 ![Distributed Version Control](./imgs/distributed-vs.png)
