@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Running Commands in Docker Containers &#8212; Fundamentals of Research Software Engineering</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data and Docker" href="docker-data.html" />
+    <link rel="prev" title="The Basics of Docker" href="docker-basics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fundamentals of Research Software Engineering</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Fundamentals of Research Software Engineering
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="docker.html">
+   Docker
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-basics.html">
+     The Basics of Docker
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Running Commands in Docker Containers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-data.html">
+     Data and Docker
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="docker-exercises.html">
+     Docker Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocker/docker-execute.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/docker/docker-execute.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interacting-with-a-running-container">
+   Interacting with a running Container
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Running Commands in Docker Containers</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interacting-with-a-running-container">
+   Interacting with a running Container
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="running-commands-in-docker-containers">
+<h1>Running Commands in Docker Containers<a class="headerlink" href="#running-commands-in-docker-containers" title="Permalink to this headline">#</a></h1>
+<p>In the last section, we learnt how to create Docker containers and run them. Running them meant that they executed predefined processes (e.g. printing a hello world message). There are many images that you can use that way, however, you can also choose what command a Docker container should execute. Try running the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">alpine</span> <span class="n">echo</span> <span class="s2">&quot;Hello World&quot;</span>
+</pre></div>
+</div>
+<p>You should see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">image</span> <span class="s1">&#39;alpine:latest&#39;</span> <span class="n">locally</span>
+<span class="n">latest</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span> <span class="nn">library</span><span class="o">/</span><span class="n">alpine</span>
+<span class="n">a9eaa45ef418</span><span class="p">:</span> <span class="n">Pull</span> <span class="n">complete</span> 
+<span class="n">Digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="n">f271e74b17ced29b915d351685fd4644785c6d1559dd1f2d4189a5e851ef753a</span>
+<span class="n">Status</span><span class="p">:</span> <span class="n">Downloaded</span> <span class="n">newer</span> <span class="n">image</span> <span class="k">for</span> <span class="n">alpine</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">Hello</span> <span class="n">World</span>
+</pre></div>
+</div>
+<p>Docker first pulls the image from the registry (if you have not used it before), create a container and then print “Hello World”, which is exactly what we told it to do!</p>
+<p>What is happening? The alpine image is an image that provides a basic Alpine Linux system. It doesn’t run any commands when you start a container created from the image but instead gives you access to the basic functionality of the operating system such as a shell. If you only run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span></code> you won’t get any output. However, when you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">alpine</span> <span class="pre">[a</span> <span class="pre">command]</span></code> you tell the container to execute the given command in that operating system.</p>
+<section id="interacting-with-a-running-container">
+<h2>Interacting with a running Container<a class="headerlink" href="#interacting-with-a-running-container" title="Permalink to this headline">#</a></h2>
+<p>This is cool! We can run commands in a Docker container that haven’t been predefined by the creator of the container. But it gets better!</p>
+<p>Run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="n">jdamerow</span><span class="o">/</span><span class="n">temperature</span><span class="o">-</span><span class="n">converter</span> <span class="n">python</span> <span class="o">./</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span>  
+</pre></div>
+</div>
+<p>You should see the following error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span><span class="p">,</span> <span class="n">enter</span> <span class="n">temperature</span> <span class="ow">in</span> <span class="n">Celsius</span><span class="p">:</span> <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/app/./convert.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">celsius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please, enter temperature in Celsius: &quot;</span><span class="p">))</span>
+<span class="ne">EOFError</span><span class="p">:</span> <span class="n">EOF</span> <span class="n">when</span> <span class="n">reading</span> <span class="n">a</span> <span class="n">line</span>
+</pre></div>
+</div>
+<p>What is happening? The command pulls the image <code class="docutils literal notranslate"><span class="pre">jdamerow/temperature-converter</span></code>, creates and then runs a container from it. We tell the container to run the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">./convert.py</span></code>. This command, however, executes the <code class="docutils literal notranslate"><span class="pre">convert.py</span></code> script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">celsius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please, enter temperature in Celsius: &quot;</span><span class="p">))</span>
+<span class="n">fahrenheit</span> <span class="o">=</span> <span class="p">(</span><span class="n">celsius</span> <span class="o">*</span> <span class="mf">1.8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> Celsius is </span><span class="si">{1}</span><span class="s2"> Fahrenheit.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">celsius</span><span class="p">,</span> <span class="n">fahrenheit</span><span class="p">))</span> 
+</pre></div>
+</div>
+<p>All this script is doing is asking for input from the user (a number representing degree in Celsius), calculating the degree in Fahrenheit from it, and then printing the result. However, the container does not let us provide an input, so the script errors out (with the error message seen above).</p>
+<p>Try adding <code class="docutils literal notranslate"><span class="pre">-i</span></code> to the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">--</span><span class="n">rm</span> <span class="n">jdamerow</span><span class="o">/</span><span class="n">temperature</span><span class="o">-</span><span class="n">converter</span> <span class="n">python</span> <span class="o">./</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span>  
+</pre></div>
+</div>
+<p>You should now be able to enter a number! The <code class="docutils literal notranslate"><span class="pre">-i</span></code> flag stands for <code class="docutils literal notranslate"><span class="pre">interactive</span></code> and allows you to interact with the container. This now let’s you basically run any software you can run through the terminal even if you don’t have the necessary dependencies on your computer. For instance, to run the above Python script, you do not need Python installed!</p>
+<p>And it gets even better! Try adding the <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag to the command and remove the Python script command like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="n">jdamerow</span><span class="o">/</span><span class="n">temperature</span><span class="o">-</span><span class="n">converter</span>
+</pre></div>
+</div>
+<p>You should get the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.9.16</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">23</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">45</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">10.2.1</span> <span class="mi">20210110</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> 
+</pre></div>
+</div>
+<p>This is the Python interpreter! You can now use it (almost) the same way as you would use on your host system. Type <code class="docutils literal notranslate"><span class="pre">exit()</span></code> to exit out of it.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag stands for <code class="docutils literal notranslate"><span class="pre">tty</span></code>. In simple terms, this means that you get a terminal connection to the container. The terminal connection lets you interact with the Python interpreter. If you execute <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">--rm</span> <span class="pre">jdamerow/temperature-converter</span> <span class="pre">bash</span></code> it gives you access to a bash shell inside the container.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docker"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="docker-basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Basics of Docker</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="docker-data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data and Docker</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Julia Damerow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
