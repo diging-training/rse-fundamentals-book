@@ -166,6 +166,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="vim.html">
+     Vim
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="git-commit.html">
      Saving Changes
     </a>
@@ -364,6 +369,11 @@ title="Print to PDF"
    Creating Remote Repositories
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pushing-code">
+   Pushing Code
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -386,6 +396,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-remote-repositories">
    Creating Remote Repositories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pushing-code">
+   Pushing Code
   </a>
  </li>
 </ul>
@@ -414,6 +429,16 @@ title="Print to PDF"
 <span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
 </pre></div>
 </div>
+</section>
+<section id="pushing-code">
+<h2>Pushing Code<a class="headerlink" href="#pushing-code" title="Permalink to this headline">#</a></h2>
+<p>To push your code to the new remote repository, go back to your project in the terminal. Then follow the instructions from GitHub (make sure you are in your project folder, the folder that has the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">M</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Once these command execute succesfully, you can go back to GitHub and will now see that all your files are in the remote repository. Note that only files that were committed before will have been pushed.</p>
 </section>
 </section>
 

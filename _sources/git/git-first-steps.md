@@ -69,4 +69,5 @@ nothing to commit (create/copy files and use "git add" to track)
 
 `git status` is your friend. Use it often! It will always tell you the status of your changes. Specifically, it tells you what branch you are working on, what has been changed, and what has been marked as to be included in your next version. `git status` will never change something. It'll just tell you what's currently going on.
 
-Congratulations, using `git init`, you have created your first local Git repository.
+
+

@@ -20,3 +20,15 @@ git remote add origin https://github.com/your-username/your-repo-name.git
 git branch -M main
 git push -u origin main
 ```
+
+## Pushing Code
+
+To push your code to the new remote repository, go back to your project in the terminal. Then follow the instructions from GitHub (make sure you are in your project folder, the folder that has the `.git` directory).
+
+```
+git remote add origin https://github.com/your-username/your-repo-name.git
+git branch -M main
+git push -u origin main
+```
+
+Once these command execute succesfully, you can go back to GitHub and will now see that all your files are in the remote repository. Note that only files that were committed before will have been pushed.
