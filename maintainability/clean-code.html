@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>GitHub Collaborators &#8212; Fundamentals of Research Software Engineering</title>
+    <title>Clean Code for Research &#8212; Fundamentals of Research Software Engineering</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Clean Code for Research" href="../maintainability/clean-code.html" />
-    <link rel="prev" title="GitHub Issues" href="github-issues.html" />
+    <link rel="next" title="Code Examples" href="code-examples.html" />
+    <link rel="prev" title="GitHub Collaborators" href="../git/github-collaborators.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -146,70 +146,70 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="git.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../git/git.html">
    Version Control with Git
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="git-overview.html">
+    <a class="reference internal" href="../git/git-overview.html">
      How Git Works
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git-first-steps.html">
+    <a class="reference internal" href="../git/git-first-steps.html">
      First Steps with Git
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="vim.html">
+    <a class="reference internal" href="../git/vim.html">
      Vim
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git-commit.html">
+    <a class="reference internal" href="../git/git-commit.html">
      Saving Changes
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git-exercise-1.html">
+    <a class="reference internal" href="../git/git-exercise-1.html">
      Local Git Exercises
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git-remote.html">
+    <a class="reference internal" href="../git/git-remote.html">
      GitHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="github-issues.html">
+    <a class="reference internal" href="../git/github-issues.html">
      GitHub Issues
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../git/github-collaborators.html">
      GitHub Collaborators
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../maintainability/clean-code.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Clean Code for Research
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../maintainability/code-examples.html">
+    <a class="reference internal" href="code-examples.html">
      Code Examples
     </a>
    </li>
@@ -305,7 +305,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgit/github-collaborators.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmaintainability/clean-code.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -333,7 +333,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/git/github-collaborators.md"
+        <a href="../_sources/maintainability/clean-code.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -370,23 +370,84 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-you-recognize-low-quality-code">
+   How do you recognize low quality code?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-with-the-small-things">
+   Starting with the small things
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naming-things">
+     Naming things
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>GitHub Collaborators</h1>
+                <h1>Clean Code for Research</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-you-recognize-low-quality-code">
+   How do you recognize low quality code?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-with-the-small-things">
+   Starting with the small things
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naming-things">
+     Naming things
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -394,12 +455,26 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="github-collaborators">
-<h1>GitHub Collaborators<a class="headerlink" href="#github-collaborators" title="Permalink to this headline">#</a></h1>
-<p>If you want other people to make changes to one of your repositories, you can make them collaborators. If you have a public repository, anyone can see all files by default, but not make any changes to them. If you have a private repository, only people you add to the repository can see the contents of the repository.</p>
-<p>To add someone as collaborator, go to the “Settings” tab of a repository (make sure you have selected a repository first, before looking for the settings tab). Then choose “Collaborators and teams” from the menu on the left.</p>
-<p><img alt="GitHub Collaborators" src="../_images/github-collaborators.png" /></p>
-<p>Click on “Add people” to add someone to your repository. You can enter a name to search for, but the best way of adding collaborators is to ask for their GitHub username and use that to search. There are different levels of access you can give your collaborators, from just being able to see all files to being able to administer the repository (and, for instance, add more collaborators). For many use cases “Write” access is sufficient, which lets the collaborator edit and add files to the repository.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="clean-code-for-research">
+<h1>Clean Code for Research<a class="headerlink" href="#clean-code-for-research" title="Permalink to this headline">#</a></h1>
+<p>If you have been programming for more than a month or two (it really doesn’t take a lot longer than that), you will probably have run into the issue of trying to fix a bug or add a feature in your code, but realizing that you don’t understand anymore what your code is doing. Don’t worry, you are not alone! In fact, this issue is so common that people write books about how to overcome this issue. In 2008, Robert C. “Uncle Bob” Martin published <em>Clean Code: A Handbook of Agile Software Craftsmanship</em>, which became a classic in software engineering. Martin discusses how to write code that is maintainable, understandable, and extendable.</p>
+<p>You might think that this is mostly important for teams of developers and companies where code needs to be maintained over longer periods of time by multiple people and not your small script that analyses your dataset. This is not the case, however. While it might be true that code developed for research purposes is often only used by one or two researchers for a specific project, it does not mean that the same code wouldn’t be useful to someone working on a similar project or that the original author might not need it a few months later for a different dataset. The worse the quality of the code, the harder it gets to reuse and extend it. Furthermore, the worse the quality of the code the harder it is to understand it. The harder it is to understand a piece of code, the harder it is to find and eraticate bugs.</p>
+<p>You might think that the code you are writing for your dissertation project will be done with once you graduate. But what if in your postdoctoral position, you want to extend on your previous research, maybe adapt it? Or maybe someone else is interested in doing so? What, if that code turns out to contain bugs that alter your research results? If you follow good coding pratices early on, the probability that you find flaws in your code decreases, while the ease of adding and reusing it goes up.</p>
+<p>In this section, we’ll be talking a little bit about the different best practices you can follow to improve your code quality. If you want more details or more recommendations, pick up a copy of Uncle Bob’s book (or a different one on clean code and coding best practices)!</p>
+<section id="how-do-you-recognize-low-quality-code">
+<h2>How do you recognize low quality code?<a class="headerlink" href="#how-do-you-recognize-low-quality-code" title="Permalink to this headline">#</a></h2>
+<p>There are many indicators for low quality code, some are less problematic than others. Different “features” of low quality code affect different aspects of maintainability. For instance, badly named variable, methods, or functions affect the readability and understandability of the code, while not following common conventions or recognizable patterns, affect how easy it is to modify it. Duplicate code or spaghetti code (code with no logical structure) increase the probability for side effects and the introduction of bugs. The more experience a developer has, the easier it usually is to recognize low quality code and produce high quality code. However, not all exertise translates when learning a new programming language. There are conventions and features that are specific to a programming language. An expert in one programming language is not necessarily an expert in another language as well.</p>
+</section>
+<section id="starting-with-the-small-things">
+<h2>Starting with the small things<a class="headerlink" href="#starting-with-the-small-things" title="Permalink to this headline">#</a></h2>
+<p>There are a couple of things, you can easily change when coding that don’t require too much extra work or skill.</p>
+<section id="naming-things">
+<h3>Naming things<a class="headerlink" href="#naming-things" title="Permalink to this headline">#</a></h3>
+<p>A big is how you name your variables, functions, methods, and classes. A good name should be descriptive enough to convey some information about what the named thing is for, but it should not be too long either, since names that are too long can hinder readability. For instance <code class="docutils literal notranslate"><span class="pre">get_experiment_status()</span></code> is better than <code class="docutils literal notranslate"><span class="pre">get_status_from_experiment_by_date()</span></code> (assuming that the function requires a date to be passed as argument). Furthermore, names should be consistent. If you chose <code class="docutils literal notranslate"><span class="pre">get_status()</span></code> in one case, don’t choose <code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code> in another; instead call it <code class="docutils literal notranslate"><span class="pre">get_data()</span></code>. Also, make sure to not misspell names, or you won’t be able to search for them later on. For example, <code class="docutils literal notranslate"><span class="pre">get_experment_status()</span></code> will not show up when searching for “experiment”, making it harder to find any instances in your code that handle experiments.</p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -415,7 +490,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./git"
+            path: "./maintainability"
         },
         predefinedOutput: true
     }
@@ -429,17 +504,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="github-issues.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../git/github-collaborators.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">GitHub Issues</p>
+            <p class="prev-next-title">GitHub Collaborators</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../maintainability/clean-code.html" title="next page">
+    <a class='right-next' id="next-link" href="code-examples.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Clean Code for Research</p>
+        <p class="prev-next-title">Code Examples</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
