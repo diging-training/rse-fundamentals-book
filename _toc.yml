@@ -20,3 +20,6 @@ chapters:
     - file: git/git-remote
     - file: git/github-issues
     - file: git/github-collaborators
+- file: maintainability/clean-code
+  sections:
+    - file: maintainability/code-examples
